@@ -82,13 +82,13 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-8 md:pt-32">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-4 sm:pt-6 md:pt-32 pb-8 md:pb-0">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-fit mx-auto mb-5 rounded-lg border border-white/10 backdrop-blur-2xs py-3 px-4 bg-black/30 flex items-center justify-center"
+          className="w-fit mx-auto mb-4 sm:mb-5 rounded-lg border border-white/10 backdrop-blur-2xs py-2.5 sm:py-3 px-3 sm:px-4 bg-black/30 flex items-center justify-center"
         >
           <div className="inline-flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse shrink-0" />
@@ -110,7 +110,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Heading */}
-        <div className="overflow-hidden mb-3 pb-3">
+        <div className="overflow-hidden mb-2 sm:mb-3 pb-2 sm:pb-3">
           <motion.h1
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function Hero() {
               ease: [0.16, 1, 0.3, 1],
               delay: 0.2,
             }}
-            className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08] font-display bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/55"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.12] font-display bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/55"
           >
             Stunning website for <br className="hidden md:block" />
             <span className="text-white">your business</span>
@@ -131,7 +131,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-sm md:text-base text-white/70 max-w-2xl mx-auto mb-9 leading-relaxed font-normal font-sans"
+          className="text-sm md:text-base text-white/70 max-w-2xl mx-auto mb-6 sm:mb-9 leading-relaxed font-normal font-sans px-1"
         >
           Modern websites for Australian businesses. We design and build from
           UI/UX to back-end, so you get fast, reliable products that scale.
@@ -142,7 +142,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
           <motion.button
             whileHover={{ scale: 1.02 }}
