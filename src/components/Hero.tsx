@@ -1,8 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
-import { motion, useSpring, useMotionValue } from "motion/react";
+import {
+  motion,
+  useSpring,
+  useMotionValue,
+  AnimatePresence,
+} from "motion/react";
+
+const rotatingWords = [
+  "your business",
+  "startups",
+  "ecommerce",
+  "contractors",
+  "agencies",
+  "SaaS products",
+  "restaurants",
+  "real estate",
+];
 
 export default function Hero() {
+  const [wordIndex, setWordIndex] = useState(0);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,10 +52,17 @@ export default function Hero() {
     };
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
   const setSlowMotion = () => {
     const video = videoRef.current;
     if (video) {
-      video.playbackRate = 0.25;
+      video.playbackRate = 0.9;
     }
   };
 
@@ -104,7 +128,7 @@ export default function Hero() {
                 animation: "badge-glow-sweep 3s ease-in-out infinite",
               }}
             >
-              New: AI-powered website design tool
+              Australia-based website builder agency
             </span>
           </div>
         </motion.div>
@@ -122,7 +146,35 @@ export default function Hero() {
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.12] font-display bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/55"
           >
             Stunning website for <br className="hidden md:block" />
-            <span className="text-white">your business</span>
+            <span
+              className="relative inline-grid overflow-hidden align-bottom"
+              style={{ height: "1.2em" }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={rotatingWords[wordIndex]}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{
+                    y: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                    opacity: { duration: 0.3 },
+                  }}
+                  className="col-start-1 row-start-1 whitespace-nowrap bg-gradient-to-r from-brand via-white to-brand bg-clip-text text-transparent bg-[length:200%_100%] animate-[gradient-shift_3s_ease-in-out_infinite]"
+                >
+                  {rotatingWords[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+              {rotatingWords.map((word) => (
+                <span
+                  key={word}
+                  className="col-start-1 row-start-1 invisible whitespace-nowrap"
+                  aria-hidden
+                >
+                  {word}
+                </span>
+              ))}
+            </span>
           </motion.h1>
         </div>
 
